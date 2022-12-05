@@ -40,13 +40,13 @@ export class CryptoCloud {
     return connector
   }
 
-  public createInvoice(options: CreateInvoiceOptions): Promise<CreateInvoiceResponse> {
+  public async createInvoice(options: CreateInvoiceOptions): Promise<CreateInvoiceResponse> {
     return this.connector
       .post<CreateInvoiceResponse>('/invoice/create', { ...options, shopId: this.shopId })
       .then(res => res.data)
   }
 
-  public checkInvoiceStatus(options: CheckInvoiceStatusOptions): Promise<CheckInvoiceStatusResponse> {
+  public async checkInvoiceStatus(options: CheckInvoiceStatusOptions): Promise<CheckInvoiceStatusResponse> {
     if (!options.uuid.match(/^INV-/)) {
       options.uuid = `INV-${options.uuid}`
     }
