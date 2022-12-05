@@ -1,0 +1,14 @@
+{
+  "name": "cryptocloud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "cryptocloud",
+    "crypto",
+    "api"
+  ],
+  "author": "Evan Fokin",
+  "license": "ISC"
+}
