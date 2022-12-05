@@ -1,6 +1,6 @@
 {
   "name": "cryptocloud",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Wrapper for working with cryptocloud.plus",
   "main": "./dist/index.js",
   "author": {
