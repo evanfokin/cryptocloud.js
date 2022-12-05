@@ -13,7 +13,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    environment: test
+    env:
+      API_KEY: ${{ secrets.API_KEY }}
+      SHOP_ID: ${{ secrets.SHOP_ID }}
 
     strategy:
       matrix:
