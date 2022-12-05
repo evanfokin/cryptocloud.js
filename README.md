@@ -1,8 +1,8 @@
 # Cryptocloud.js
 Wrapper for working with cryptocloud.plus
 
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/evanfokin/cryptocloud.js/Node.js%20CI)
 ![npm](https://img.shields.io/npm/v/cryptocloud)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/cryptocloud)
 ![npm](https://img.shields.io/npm/dm/cryptocloud)
 ## Installation
 Install with npm:
