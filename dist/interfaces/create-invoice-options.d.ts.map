@@ -1,0 +1,1 @@
+{"version":3,"file":"create-invoice-options.d.ts","sourceRoot":"","sources":["../../src/interfaces/create-invoice-options.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,mBAAmB,CAAA;AAE5C,MAAM,WAAW,oBAAoB;IAEnC,MAAM,EAAE,MAAM,CAAA;IAEd,OAAO,CAAC,EAAE,MAAM,CAAA;IAEhB,QAAQ,CAAC,EAAE,QAAQ,CAAA;IAEnB,KAAK,CAAC,EAAE,MAAM,CAAA;CACf"}

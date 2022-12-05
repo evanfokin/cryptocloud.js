@@ -5,5 +5,5 @@ export interface CheckInvoiceStatusResponse extends CommonResponse {
   // Invoice status
   statusInvoice: StatusInvoice
   // Error text
-  error: string
+  error?: string
 }

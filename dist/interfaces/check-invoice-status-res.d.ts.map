@@ -1,0 +1,1 @@
+{"version":3,"file":"check-invoice-status-res.d.ts","sourceRoot":"","sources":["../../src/interfaces/check-invoice-status-res.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAE,MAAM,yBAAyB,CAAA;AACvD,OAAO,EAAE,cAAc,EAAE,MAAM,cAAc,CAAA;AAE7C,MAAM,WAAW,0BAA2B,SAAQ,cAAc;IAEhE,aAAa,EAAE,aAAa,CAAA;IAE5B,KAAK,CAAC,EAAE,MAAM,CAAA;CACf"}

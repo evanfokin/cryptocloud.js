@@ -1,26 +1,43 @@
 {
   "name": "cryptocloud",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "tsc --build",
-    "format": "prettier ./src --write",
-    "format:check": "prettier ./src --check"
+  "description": "Wrapper for working with cryptocloud.plus",
+  "main": "./dist/index.js",
+  "author": {
+    "name": "Evan Fokin"
   },
+  "license": "ISC",
   "keywords": [
     "cryptocloud",
     "crypto",
     "api"
   ],
-  "author": "Evan Fokin",
-  "license": "ISC",
+  "scripts": {
+    "prepare": "husky install",
+    "prepublishOnly": "npm run format:check && npm run build && npm run test",
+    "prebuild": "rimraf ./dist",
+    "build": "tsc --build",
+    "format": "prettier ./src --write",
+    "format:check": "prettier ./src --check",
+    "test": "jest"
+  },
   "devDependencies": {
+    "@types/jest": "^29.2.4",
+    "dotenv": "^16.0.3",
+    "husky": "^8.0.2",
+    "jest": "^29.3.1",
     "prettier": "^2.8.0",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
     "typescript": "^4.9.3"
   },
   "dependencies": {
     "axios": "1.1.3",
     "case": "^1.6.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evanfokin/cryptocloud.js.git"
   }
 }
