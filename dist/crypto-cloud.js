@@ -23,7 +23,7 @@ class CryptoCloud {
     }
     createConnector() {
         const connector = axios_1.default.create({
-            baseURL: 'https://api.cryptocloud.plus/v1/',
+            baseURL: 'https://api.cryptocloud.plus/v1',
             headers: {
                 Authorization: `Token ${this.apiKey}`,
             },
@@ -32,11 +32,11 @@ class CryptoCloud {
             this.applyCase(config.params, 'snake');
             this.applyCase(config.data, 'snake');
             return config;
-        }, e => Promise.reject(e));
+        }, error => Promise.reject(error));
         connector.interceptors.response.use(response => {
             this.applyCase(response.data, 'camel');
             return response;
-        }, e => Promise.reject(e));
+        }, error => Promise.reject(error));
         return connector;
     }
     createInvoice(options) {
@@ -48,22 +48,24 @@ class CryptoCloud {
     }
     checkInvoiceStatus(options) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (!options.uuid.match(/^INV-/)) {
+            if (options.uuid.match(/^INV-/) === null) {
                 options.uuid = `INV-${options.uuid}`;
             }
             return this.connector.get('/invoice/info', { params: options }).then(res => res.data);
         });
     }
     applyCase(obj, _case) {
-        if (typeof obj === 'object') {
-            Object.keys(obj).forEach(param => {
-                const cased = (_case === 'snake' ? case_1.snake : case_1.camel)(param);
-                if (cased === param)
-                    return;
-                obj[cased] = obj[param];
-                delete obj[param];
-            });
+        const isObject = obj !== null && typeof obj === 'object';
+        if (isObject === false) {
+            return;
         }
+        Object.keys(obj).forEach(param => {
+            const cased = (_case === 'snake' ? case_1.snake : case_1.camel)(param);
+            if (cased === param)
+                return;
+            obj[cased] = obj[param];
+            delete obj[param];
+        });
     }
 }
 exports.CryptoCloud = CryptoCloud;

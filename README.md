@@ -56,3 +56,9 @@ if (status.statusInvoice === 'created') {
   // ...
 }
 ```
+
+## Local development
+
+1. `npm ci i`
+2. create and fill out `.env` file based on `.env.example`
+3. make sure all tests are passed by running `npm test`

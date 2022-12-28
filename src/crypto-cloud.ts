@@ -1,8 +1,9 @@
 import axios, { AxiosInstance } from 'axios'
+import { snake, camel } from 'case'
+
 import { CheckInvoiceStatusOptions } from './interfaces/check-invoice-status-options'
 import { CheckInvoiceStatusResponse } from './interfaces/check-invoice-status-res'
 import { CreateInvoiceOptions } from './interfaces/create-invoice-options'
-import { snake, camel } from 'case'
 import { CreateInvoiceResponse } from './interfaces/create-invoice-res'
 
 export class CryptoCloud {
@@ -14,7 +15,7 @@ export class CryptoCloud {
 
   private createConnector(): AxiosInstance {
     const connector = axios.create({
-      baseURL: 'https://api.cryptocloud.plus/v1/',
+      baseURL: 'https://api.cryptocloud.plus/v1',
       headers: {
         Authorization: `Token ${this.apiKey}`,
       },
@@ -24,9 +25,10 @@ export class CryptoCloud {
       config => {
         this.applyCase(config.params, 'snake')
         this.applyCase(config.data, 'snake')
+
         return config
       },
-      e => Promise.reject(e),
+      error => Promise.reject(error),
     )
 
     connector.interceptors.response.use(
@@ -34,7 +36,7 @@ export class CryptoCloud {
         this.applyCase(response.data, 'camel')
         return response
       },
-      e => Promise.reject(e),
+      error => Promise.reject(error),
     )
 
     return connector
@@ -47,20 +49,25 @@ export class CryptoCloud {
   }
 
   public async checkInvoiceStatus(options: CheckInvoiceStatusOptions): Promise<CheckInvoiceStatusResponse> {
-    if (!options.uuid.match(/^INV-/)) {
+    if (options.uuid.match(/^INV-/) === null) {
       options.uuid = `INV-${options.uuid}`
     }
+
     return this.connector.get<CheckInvoiceStatusResponse>('/invoice/info', { params: options }).then(res => res.data)
   }
 
   private applyCase(obj: any, _case: 'snake' | 'camel'): void {
-    if (typeof obj === 'object') {
-      Object.keys(obj).forEach(param => {
-        const cased = (_case === 'snake' ? snake : camel)(param)
-        if (cased === param) return
-        obj[cased] = obj[param]
-        delete obj[param]
-      })
+    const isObject = obj !== null && typeof obj === 'object'
+
+    if (isObject === false) {
+      return
     }
+
+    Object.keys(obj).forEach(param => {
+      const cased = (_case === 'snake' ? snake : camel)(param)
+      if (cased === param) return
+      obj[cased] = obj[param]
+      delete obj[param]
+    })
   }
 }
